@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minesweeper</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+
+    <div>
+        
+    </div>
+    <div id="title">
+        <div id="drop">
+            <div id="drop-content">
+                    <li class="options">Beginner</li>
+                    <li class="options">Intermediate</li>
+                    <li class="options">Expert</li>
+                    <li class="options">Custom
+                        <form id="myForm">
+                            <label for="rows">Rows</label>
+                        <input type="text" maxlength="2" id="rows" name="rows" class="number" autocomplete="off">
+                        <label for="cols">Cols</label>
+                        <input type="text" maxlength="2" id="cols" name="cols" class="number" autocomplete="off">
+                        
+                        <label for="num_bombs">Bombs</label>
+                        <input type="text" maxlength="3" id="num_bombs" name="num_bombs" class="number" autocomplete="off">
+                        <input type="submit" id="submitCustom" value="Start">
+                        </form>
+                    </li>
+            </div>
+        </div>
+        <h1>Minesweeper</h1>
+        <a href="https://github.com/ramailkk" id="github" target="_blank"><img src="github.svg" alt=""></a>
+    </div>
+    <div id="container">
+        <div id="demo">
+            <div id="banner" >
+                <span id="time"></span>
+                <button id="resetBoard"></button>
+                <span id="bombs">888</span>
+            </div>
+            <div id="cells">
+                
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="index.js">
+
+
+</script>
+
+</body>
+</html>

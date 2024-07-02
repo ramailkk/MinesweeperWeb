@@ -1,0 +1,251 @@
+:root {
+    --dynamic-width: calc(100vh - 50px)
+    --dynamic-height: 320px; /* Initial value */
+}
+@font-face {
+    font-family: 'MinesweeperFont';
+    src: url('fonts/mine-sweeper.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Digital7';
+    src: url('fonts/DS-DIGIB.TTF') format('truetype');
+}
+
+*{
+    user-select: none;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #818181;
+    box-sizing: border-box;
+    font-family: 'MinesweeperFont';
+}
+
+.number{
+    width: 35px;
+    height: 20px;
+    border-radius: 3px;
+    margin-left: 5px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.number :hover{
+    outline: none;
+    background: red;
+    display: none;
+}
+#num_bombs{
+    margin-left: -2.5px;
+}
+label{
+    font-size: 1em;
+}
+#submitCustom{
+    text-align: center;
+    width: 6em;
+    border-radius: 5px;
+    border: 2px solid black;
+    margin: 15px;
+}
+#sumbitCustom :focus{
+    background-color: red;
+}
+
+
+/* Title Bar Container */
+#title {
+    width: 100%; /* Full width of the parent container */
+    height: 100px; /* Fixed height */
+    background: #c0c0c0;
+    border: 10px #808080 solid;
+    border-radius: 50px;
+    position: relative;
+    text-align: center;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    padding: 0.5rem; /* Add some padding */
+}
+
+/* Centered Title Text */
+#title h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 32px; /* Fixed font size */
+    font-family: monospace;
+    font-style: normal;
+    font-weight: bold;
+    margin: 0; /* Remove default margin */
+}
+#github {
+    position: absolute;
+    top: 50%;
+    right: 1%;
+    transform: translateY(-50%);
+    padding: 0.5rem; /* Add some padding for better touch interaction */
+}
+
+#github img {
+    width: 10vw; /* Use viewport width for responsive sizing */
+    max-width: 50px; /* Limit the maximum size */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 50px;
+    object-fit: contain;
+}
+#github  :hover{
+    margin-right: 10px;
+}
+#drop {
+    position: relative; /* Keep it as relative */
+    width: 50px;
+    height: 50px;
+    background-image: url(drop.png);
+    top: 50%;
+    left: 2%;
+    transform: translate(-2%, -50%);
+    
+    z-index: 100; /* Set a high z-index value */
+}
+
+#drop-content {
+    position: absolute; /* Position it absolutely */
+    top: 100%; /* Position it below #drop */
+    left: 0; /* Align it with #drop */
+    font-family: monospace;
+    display: none;
+    z-index: 101; /* Higher than the z-index of other elements */
+}
+
+#drop-content li{
+    text-align: center;
+    font-size: 16px;
+    list-style-type: none;
+    
+    border-width: 10px;
+    background: #c0c0c0;
+
+    padding: 1.5em 2.5em;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    width: 6em;
+    z-index: 6;
+}
+
+#drop:hover{
+    margin-left: 10px;
+}
+#drop:hover #drop-content{
+    display: block;
+}
+#drop-content :hover{
+    background: #818181;
+}
+
+
+#container{
+float: left;
+/* border: 20px red solid; */
+margin: 0 50%;
+padding: 5% 0;
+transform: translateX(-50%);
+}
+
+#demo{
+    float: left;
+    /* border: 2px #716969 solid;
+    border-width: 10px; */
+    width: var(--dynamic-width);
+    height: calc(--dynamic-height + 70px);
+    
+}
+#banner{
+    width: var(--dynamic-width);
+    height: 4.5em;
+    background-color: #c0c0c0;
+    position: relative;
+    border-top: 5px #808080 solid;
+    border-left: 5px #808080 solid;
+    border-right: 5px #ffffff solid;
+    border-bottom: 5px #ffffff solid;
+    outline: 10px #c0c0c0 solid;
+}
+
+#banner span{
+    display: inline-block;
+    background: black;
+    color: red;
+    height: 48px;
+    width: 75px;
+    text-align: center;
+    font-size: 3.0em;
+    font-family: 'Digital7';  
+    text-shadow: 2px 2px 50px rgba(62, 112, 0, 1);
+    border-top: 2px #808080 solid;
+    border-left: 2px #808080 solid;
+    border-right: 2px #ffffff solid;
+    border-bottom: 2px #ffffff solid;
+}
+#bombs{
+    position: absolute;
+    top: 50%;
+    left: 1%;
+    transform: translate(-1%, -50%);
+
+}
+#time{
+    
+    float: right;
+    position: absolute;
+    top: 50%;
+    right: 1%;
+    transform: translate(1%, -50%);
+    
+}
+#resetBoard{
+    
+    background-color: #c0c0c0;
+    background-image: url(smile.png);
+    border-top: 4px #ffffff solid;
+    border-left: 4px #ffffff solid;
+    border-right: 4px #808080 solid;
+    border-bottom: 4px #808080 solid;
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#cells{
+    margin-top: 10px;
+    width: var(--dynamic-width);
+    height: var(--dynamic-height);
+    /* border: 2px blue solid; */
+    border-top: 5px #808080 solid;
+    border-left: 5px #808080 solid;
+    border-right: 5px #ffffff solid;
+    border-bottom: 5px #ffffff solid;
+    outline: 10px #c0c0c0 solid;
+    
+}
+.buttons{
+    color: black;
+    border-top: 4px #ffffff solid;
+    border-left: 4px #ffffff solid;
+    border-right: 4px #808080 solid;
+    border-bottom: 4px #808080 solid;
+    font-size: 1.00em;
+    background-color: #c0c0c0;
+    vertical-align: top;
+    /* font-weight: bolder; */
+    overflow: hidden;
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: MinesweeperFont;
+}
