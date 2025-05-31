@@ -100,7 +100,7 @@ label{
     position: relative; /* Keep it as relative */
     width: 50px;
     height: 50px;
-    background-image: url(drop.png);
+    background-image: url(./icons/drop.png);
     top: 50%;
     left: 2%;
     transform: translate(-2%, -50%);
@@ -204,7 +204,7 @@ transform: translateX(-50%);
 #resetBoard{
     
     background-color: #c0c0c0;
-    background-image: url(smile.png);
+    background-image: url(./icons/smile.png);
     border-top: 4px #ffffff solid;
     border-left: 4px #ffffff solid;
     border-right: 4px #808080 solid;
