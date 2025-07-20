@@ -9,4 +9,5 @@ This is a browser-based implementation of the classic Minesweeper puzzle game. T
 
 ## How to Run the Project
 
-You can run this project locally using the **Live Server** extension in Visual Studio Code.
+You can run this project online with this link:
+[https://minesweeper-web-one.vercel.app/](https://minesweeper-web-one.vercel.app/)
