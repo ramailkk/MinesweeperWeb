@@ -1,3 +1,17 @@
+const iconPaths = [
+  './icons/smile.png',
+  './icons/win.png',
+  './icons/death.png',
+  './icons/flag.png',
+  './icons/bomb.gif',
+  './icons/drop.png'
+];
+
+iconPaths.forEach(path => {
+  const img = new Image();
+  img.src = path;
+});
+
 class Board {
   constructor(rows, cols, bombs, r, c) {
     this.rows = rows;
