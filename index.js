@@ -347,7 +347,7 @@ function newGame(rows, cols, originalbombs) {
                     if (gameboard.gameover === "N") {
                       resetButton.style.backgroundImage = "url('./icons/smile.png')";
                     }
-                  }, 200);
+                  }, 100);
                 }
                 if (gameboard.gameover !== "N") stopTimer();
           }
