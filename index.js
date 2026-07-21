@@ -1,5 +1,6 @@
 const iconPaths = [
   './icons/smile.png',
+  './icons/oh.png',
   './icons/win.png',
   './icons/death.png',
   './icons/flag.png',
@@ -332,15 +333,23 @@ function newGame(rows, cols, originalbombs) {
           if (para.style.backgroundImage !== "") return;
           else {
             gameboard.makeMove(index, j);
-            if (
-              JSON.stringify(gameboard.displayBoard) ===
-              JSON.stringify(gameboard.board)
-            ) {
-              gameboard.gameover = "W";
-              resetButton.style.backgroundImage = "url('./icons/win.png')";
-              bombs = 0;
-            }
-            if (gameboard.gameover !== "N") stopTimer();
+                if (
+                  JSON.stringify(gameboard.displayBoard) ===
+                  JSON.stringify(gameboard.board)
+                ) {
+                  gameboard.gameover = "W";
+                  resetButton.style.backgroundImage = "url('./icons/win.png')";
+                  bombs = 0;
+                } else if (gameboard.gameover === "N") {
+                  // safe click — flash the "oh" face briefly
+                  resetButton.style.backgroundImage = "url('./icons/oh.png')";
+                  setTimeout(function () {
+                    if (gameboard.gameover === "N") {
+                      resetButton.style.backgroundImage = "url('./icons/smile.png')";
+                    }
+                  }, 200);
+                }
+                if (gameboard.gameover !== "N") stopTimer();
           }
           updateCells(index, j);
         } else para.style.border = "";
