@@ -269,8 +269,12 @@ function newGame(rows, cols, originalbombs) {
   );
 
   resetButton.onclick = function () {
-    resetEverything();
-  };
+  resetEverything();
+  resetButton.style.backgroundImage = "url('./icons/oh.png')";
+  setTimeout(function () {
+    resetButton.style.backgroundImage = "url('./icons/smile.png')";
+  }, 100);
+};
   resetButton.onmousedown = function () {
     resetButton.style.border = "3px #808080 solid";
     // border-top: 4px #ffffff solid;
