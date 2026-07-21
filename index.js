@@ -13,6 +13,19 @@ iconPaths.forEach(path => {
   img.src = path;
 });
 
+function setDisplay(el, valueStr) {
+  valueStr = String(valueStr);
+  let ghostHtml = '<span class="lcd-ghost">';
+  let valueHtml = '<span class="lcd-value">';
+  for (let k = 0; k < valueStr.length; k++) {
+    ghostHtml += '<span class="lcd-digit">8</span>';
+    valueHtml += `<span class="lcd-digit">${valueStr[k]}</span>`;
+  }
+  ghostHtml += '</span>';
+  valueHtml += '</span>';
+  el.innerHTML = ghostHtml + valueHtml;
+}
+
 class Board {
   constructor(rows, cols, bombs, r, c) {
     this.rows = rows;
@@ -190,8 +203,8 @@ var resetButton = document.getElementById("resetBoard");
 function heavyReset(rows, cols, originalbombs) {
   const parent = document.getElementById("cells");
   parent.innerHTML = "";
-  document.getElementById("time").innerHTML = "";
-  document.getElementById("bombs").innerHTML = "";
+  setDisplay(document.getElementById("time"), "");
+  setDisplay(document.getElementById("bombs"), "");
   istimerRunning = true;
   startTime = Math.floor(Date.now() / 1000);
   resetButton.style.backgroundImage = "url('./icons/smile.png')";
@@ -205,7 +218,7 @@ function startTimeCounter() {
   var now = Math.floor(Date.now() / 1000); // get the time now
   var diff = now - startTime; // diff in seconds between now and start
   m = checkDigits(diff); // add a leading zero if it's single digit
-  document.getElementById("time").innerHTML = m; // update the element where the timer will appear
+  setDisplay(document.getElementById("time"), m); // update the element where the timer will appear
   var t = setTimeout(startTimeCounter, 999); // set a timeout to update the timer
 }
 function checkDigits(i) {
@@ -243,7 +256,7 @@ function newGame(rows, cols, originalbombs) {
     Array(buttoncols).fill(0)
   );
   var bombs = originalbombs;
-  document.getElementById("bombs").innerHTML = checkDigits(bombs);
+  setDisplay(document.getElementById("bombs"), checkDigits(bombs));
 
   document.documentElement.style.setProperty(
     "--dynamic-width",
@@ -301,11 +314,11 @@ function newGame(rows, cols, originalbombs) {
         if (para.style.backgroundImage === "" && para.innerHTML === "") {
           para.style.backgroundImage = "url('./icons/flag.png')";
           bombs--;
-          document.getElementById("bombs").innerHTML = checkDigits(bombs);
+          setDisplay(document.getElementById("bombs"), checkDigits(bombs));
         } else if (para.style.backgroundImage === 'url("./icons/flag.png")') {
           para.style.backgroundImage = "";
           bombs++;
-          document.getElementById("bombs").innerHTML = checkDigits(bombs);
+          setDisplay(document.getElementById("bombs"), checkDigits(bombs));
         }
       };
 
@@ -498,7 +511,7 @@ function newGame(rows, cols, originalbombs) {
         }
       }
     }
-    document.getElementById("bombs").innerHTML = checkDigits(bombs);
+    setDisplay(document.getElementById("bombs"), checkDigits(bombs));
   }
   function resetEverything() {
     // if(!firstPressed){
